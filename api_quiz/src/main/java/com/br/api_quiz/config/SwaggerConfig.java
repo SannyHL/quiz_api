@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public Docket getDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("basePackage"))
+        .apis(RequestHandlerSelectors.basePackage("com.br.api_quiz.controllers"))
         .build()
         .apiInfo(metaData());
     }
