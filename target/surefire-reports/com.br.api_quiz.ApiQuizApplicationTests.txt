@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.br.api_quiz.ApiQuizApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 66.412 s - in com.br.api_quiz.ApiQuizApplicationTests
