@@ -19,7 +19,9 @@ public class MateriasModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     
+    @Enumerated(EnumType.STRING)
     private MateriasEnum materia;
+    
     private String pergunta;
     private String alternativaCorreta;
     private String primeiraAlternativaIncorreta;
