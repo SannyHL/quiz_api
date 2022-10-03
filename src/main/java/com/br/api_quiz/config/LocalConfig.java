@@ -25,7 +25,9 @@ public class LocalConfig {
 
         var questao2 = new MateriasModel(null, MateriasEnum.MATEMATICA, "Qual o resultado de 6x10?", "60", "75", "25", "50");
 
-        repository.saveAll(List.of(questao1, questao2));
+        var questao3 = new MateriasModel(null, MateriasEnum.GEOGRAFIA, "Qual é a capital do Brasil?", "Brasília", "Rio de Janeiro", "Bahia", "Minas Gerais");
+
+        repository.saveAll(List.of(questao1, questao2, questao3));
     }
     
 }
