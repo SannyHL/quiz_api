@@ -9,9 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.api_quiz.dtos.MateriasDTO;
+import com.br.api_quiz.enums.MateriasEnum;
 import com.br.api_quiz.services.MateriasService;
 
 @RestController
@@ -35,5 +37,14 @@ public class MateriasController {
     public ResponseEntity<MateriasDTO> findById(@PathVariable Integer id){
         return ResponseEntity.ok().body(mapper.map(service.findId(id), MateriasDTO.class)); 
     }
+
+    @GetMapping("/findByMateria")
+    public ResponseEntity<List<MateriasDTO>> findByMateria(@RequestParam(value = "materia") MateriasEnum materia){
+        return ResponseEntity.ok()
+        .body(service.findByMateria(materia)
+        .stream().map(objetos -> mapper.map(objetos, MateriasDTO.class))
+        .collect(Collectors.toList()));
+    } 
+    
        
 }
