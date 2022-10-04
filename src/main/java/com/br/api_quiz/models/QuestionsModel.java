@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_materias")
-public class MateriasModel {
+@Table(name = "tb_questions")
+public class QuestionsModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
