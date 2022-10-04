@@ -51,7 +51,6 @@ public class MateriasService implements MateriasServiceInterface{
 
     @Override
     public MateriasModel update(MateriasDTO materiasDTO) {
-        findId(null);
         return repository.save(mapper.map(materiasDTO, MateriasModel.class));
     }
     
