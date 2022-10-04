@@ -23,8 +23,8 @@ public class SwaggerConfig {
 
     private ApiInfo metaData(){
         return new ApiInfoBuilder()
-        .title("Api Quiz")
-        .description("Spring Boot Api Rest for quiz")
+        .title("API REST Quiz")
+        .description("API REST for quiz")
         .version("1.0.0")
         .contact(new Contact("Sanny Helen Lima", "https://github.com/SannyHL/quiz_api", "sannysilvalima@gmail.com"))
         .build();
