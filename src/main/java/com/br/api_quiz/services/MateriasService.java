@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.br.api_quiz.dtos.MateriasDTO;
 import com.br.api_quiz.enums.MateriasEnum;
 import com.br.api_quiz.exceptions.ObjectNotFoundException;
 import com.br.api_quiz.interfaces.MateriasServiceInterface;
@@ -32,11 +33,26 @@ public class MateriasService implements MateriasServiceInterface{
         return materiasOptional.orElseThrow(() -> new ObjectNotFoundException("O objeto não foi encontrado"));
     }
 
-
     public List<MateriasModel> findByMateria(MateriasEnum materia) {
         return repository.findByMateria(materia);
     }
-    
-   
 
+    @Override
+    public void deleteById(Integer id) {
+        findId(id);
+        repository.deleteById(id);;
+        
+    }
+
+    @Override
+    public MateriasModel create(MateriasDTO materiasDTO) {
+        return repository.save(mapper.map(materiasDTO, MateriasModel.class));
+    }
+
+    @Override
+    public MateriasModel update(MateriasDTO materiasDTO) {
+        findId(null);
+        return repository.save(mapper.map(materiasDTO, MateriasModel.class));
+    }
+    
 }
