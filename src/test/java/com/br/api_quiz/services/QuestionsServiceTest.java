@@ -3,6 +3,10 @@ package com.br.api_quiz.services;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -16,6 +20,7 @@ import org.modelmapper.ModelMapper;
 
 import com.br.api_quiz.dtos.QuestionsDTO;
 import com.br.api_quiz.enums.MateriasEnum;
+import com.br.api_quiz.exceptions.ObjectNotFoundException;
 import com.br.api_quiz.models.QuestionsModel;
 import com.br.api_quiz.repositories.QuestionsRepository;
 
@@ -64,8 +69,23 @@ public class QuestionsServiceTest {
     }
 
     @Test
-    void testDeleteById() {
+    void whenDeleteByIdWhithSucess() {
+        when(repository.findById(anyInt())).thenReturn(questionsOptional);
+        doNothing().when(repository).deleteById(anyInt());
 
+        service.deleteById(ID);
+        verify(repository, times(1)).deleteById(anyInt());
+    }
+
+    @Test
+    void deleteWithObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("O objeto não foi encontrado"));
+        try {
+            service.deleteById(ID);
+        } catch (Exception e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("O objeto não foi encontrado", e.getMessage());
+        }
     }
 
     @Test
