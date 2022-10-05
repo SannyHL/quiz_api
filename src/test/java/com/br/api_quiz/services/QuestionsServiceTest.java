@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.br.api_quiz.dtos.QuestionsDTO;
 import com.br.api_quiz.enums.MateriasEnum;
@@ -25,6 +26,7 @@ import com.br.api_quiz.exceptions.ObjectNotFoundException;
 import com.br.api_quiz.models.QuestionsModel;
 import com.br.api_quiz.repositories.QuestionsRepository;
 
+@SpringBootTest
 public class QuestionsServiceTest {
 
     private static final int ID = 1;
