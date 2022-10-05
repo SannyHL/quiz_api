@@ -3,8 +3,13 @@ package com.br.api_quiz.services;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,12 +18,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.br.api_quiz.dtos.QuestionsDTO;
 import com.br.api_quiz.enums.MateriasEnum;
+import com.br.api_quiz.exceptions.ObjectNotFoundException;
 import com.br.api_quiz.models.QuestionsModel;
 import com.br.api_quiz.repositories.QuestionsRepository;
 
+@SpringBootTest
 public class QuestionsServiceTest {
 
     private static final int ID = 1;
@@ -64,28 +72,113 @@ public class QuestionsServiceTest {
     }
 
     @Test
-    void testDeleteById() {
+    void whenDeleteByIdWhithSucess() {
+        when(repository.findById(anyInt())).thenReturn(questionsOptional);
+        doNothing().when(repository).deleteById(anyInt());
+
+        service.deleteById(ID);
+        verify(repository, times(1)).deleteById(anyInt());
+    }
+
+    @Test
+    void deleteWithObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("O objeto não foi encontrado"));
+        try {
+            service.deleteById(ID);
+        } catch (Exception e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("O objeto não foi encontrado", e.getMessage());
+        }
+    }
+
+    @Test
+    void whenFindAllReturnAnListOfQuestions() {
+        when(repository.findAll()).thenReturn(List.of(questions));
+
+        List<QuestionsModel> response = service.findAll();
+
+        assertNotNull(response);
+        assertEquals(QuestionsModel.class, response.get(0).getClass());
+        assertEquals(1, response.size());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(MATERIA, response.get(0).getMateria());
+        assertEquals(ALTERNATIVA_CORRETA, response.get(0).getAlternativaCorreta());
+        assertEquals(PRIMEIRA_ALTERNATIVA_INCORRETA, response.get(0).getPrimeiraAlternativaIncorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.get(0).getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.get(0).getTerceiraAlternativaIncorreta());
+    }
+
+    @Test
+    void whenFindByMateriaThenReturnQuestionsForMateria() {
+        when(repository.findByMateria(any())).thenReturn(List.of(questions));
+
+        List<QuestionsModel> response = service.findByMateria(MATERIA);
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(QuestionsModel.class, response.get(0).getClass());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(MATERIA, response.get(0).getMateria());
+        assertEquals(ALTERNATIVA_CORRETA, response.get(0).getAlternativaCorreta());
+        assertEquals(PRIMEIRA_ALTERNATIVA_INCORRETA, response.get(0).getPrimeiraAlternativaIncorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.get(0).getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.get(0).getTerceiraAlternativaIncorreta());
 
     }
 
     @Test
-    void testFindAll() {
+    void whenFindIdThenReturnAnQuestion() {
+        when(repository.findById(anyInt())).thenReturn(questionsOptional);
 
+        QuestionsModel response = service.findId(ID);
+
+        assertNotNull(response);
+        assertEquals(QuestionsModel.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(MATERIA, response.getMateria());
+        assertEquals(PERGUNTA, response.getPergunta());
+        assertEquals(ALTERNATIVA_CORRETA, response.getAlternativaCorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.getTerceiraAlternativaIncorreta());
     }
 
     @Test
-    void testFindByMateria() {
+    void whenFindIdThenReturnObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("O objeto não foi encontrado"));
+        try {
+            service.findId(ID);
+        } catch (Exception e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("O objeto não foi encontrado", e.getMessage());
+        }
+    }
 
+
+    @Test
+    void whenUpdateThenReturnSucess() {
+        when(repository.save(any())).thenReturn(questions);
+
+        QuestionsModel response = service.update(questionsDTO);
+
+        assertNotNull(response);
+        assertEquals(QuestionsModel.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(MATERIA, response.getMateria());
+        assertEquals(PERGUNTA, response.getPergunta());
+        assertEquals(ALTERNATIVA_CORRETA, response.getAlternativaCorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.getTerceiraAlternativaIncorreta());
     }
 
     @Test
-    void testFindId() {
-
-    }
-
-    @Test
-    void testUpdate() {
-
+    void whenUpdateThenReturnObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("O objeto não foi encontrado"));
+        try {
+            service.update(questionsDTO);
+        } catch (Exception e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("O objeto não foi encontrado", e.getMessage());
+        }
     }
 
     private void startQuestions(){
