@@ -107,7 +107,20 @@ public class QuestionsServiceTest {
     }
 
     @Test
-    void testFindByMateria() {
+    void whenFindByMateriaThenReturnQuestionsForMateria() {
+        when(repository.findByMateria(any())).thenReturn(List.of(questions));
+
+        List<QuestionsModel> response = service.findByMateria(MATERIA);
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(QuestionsModel.class, response.get(0).getClass());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(MATERIA, response.get(0).getMateria());
+        assertEquals(ALTERNATIVA_CORRETA, response.get(0).getAlternativaCorreta());
+        assertEquals(PRIMEIRA_ALTERNATIVA_INCORRETA, response.get(0).getPrimeiraAlternativaIncorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.get(0).getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.get(0).getTerceiraAlternativaIncorreta());
 
     }
 
