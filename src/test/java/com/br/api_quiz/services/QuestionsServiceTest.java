@@ -9,6 +9,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -89,8 +90,20 @@ public class QuestionsServiceTest {
     }
 
     @Test
-    void testFindAll() {
+    void whenFindAllReturnAnListOfQuestions() {
+        when(repository.findAll()).thenReturn(List.of(questions));
 
+        List<QuestionsModel> response = service.findAll();
+
+        assertNotNull(response);
+        assertEquals(QuestionsModel.class, response.get(0).getClass());
+        assertEquals(1, response.size());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(MATERIA, response.get(0).getMateria());
+        assertEquals(ALTERNATIVA_CORRETA, response.get(0).getAlternativaCorreta());
+        assertEquals(PRIMEIRA_ALTERNATIVA_INCORRETA, response.get(0).getPrimeiraAlternativaIncorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.get(0).getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.get(0).getTerceiraAlternativaIncorreta());
     }
 
     @Test
