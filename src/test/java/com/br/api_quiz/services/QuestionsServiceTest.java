@@ -125,9 +125,32 @@ public class QuestionsServiceTest {
     }
 
     @Test
-    void testFindId() {
+    void whenFindIdThenReturnAnQuestion() {
+        when(repository.findById(anyInt())).thenReturn(questionsOptional);
 
+        QuestionsModel response = service.findId(ID);
+
+        assertNotNull(response);
+        assertEquals(QuestionsModel.class, response.getClass());
+        assertEquals(ID, response.getId());
+        assertEquals(MATERIA, response.getMateria());
+        assertEquals(PERGUNTA, response.getPergunta());
+        assertEquals(ALTERNATIVA_CORRETA, response.getAlternativaCorreta());
+        assertEquals(SEGUNDA_ALTERNATIVA_INCORRETA, response.getSegundaAlternativaIncorreta());
+        assertEquals(TERCEIRA_ALTERNATIVA_INCORRETA, response.getTerceiraAlternativaIncorreta());
     }
+
+    @Test
+    void whenFindIdThenReturnObjectNotFoundException(){
+        when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("O objeto não foi encontrado"));
+        try {
+            service.findId(ID);
+        } catch (Exception e) {
+            assertEquals(ObjectNotFoundException.class, e.getClass());
+            assertEquals("O objeto não foi encontrado", e.getMessage());
+        }
+    }
+
 
     @Test
     void testUpdate() {
