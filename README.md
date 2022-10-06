@@ -34,6 +34,9 @@ $ git clone <https://github.com/SannyHL/quiz_api.git>
 
 ➩ Acesse o código com o editor de sua preferência
 
+➩ Utilize a branch development
+$ git checkout development
+
 ➩ Instale as dependências que estão no pom.xml(normalmente o proprio editor instala as dependências)
 
 ➩ Crie um arquivo dentro da pasta resources com o nome: application.properties
