@@ -19,9 +19,9 @@
 - [X] Utilização do Swagger
 - [X] Testes unitários utilizando JUnit
 
-### Pré-requisitos
+<h2>Pré-requisitos</h2>
 
-#### Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+#### Para utilizar o código da API, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 - Java - a versão utilizada nesse projeto foi a 17.
 - Um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
@@ -34,7 +34,7 @@ $ git clone <https://github.com/SannyHL/quiz_api.git>
 
 ➩ Acesse o código com o editor de sua preferência
 
-➩ Instale as dependências do Maven (Geralmento o proprio editor instala as dependências quando o projeto é aberto nele)
+➩ Instale as dependências que estão no pom.xml(normalmente o proprio editor instala as dependências)
 
 ➩ Crie um arquivo dentro da pasta resources com o nome: application.properties
 
@@ -49,7 +49,7 @@ $ git clone <https://github.com/SannyHL/quiz_api.git>
 ### 🛠 Tecnologias utilizadas na construção do projeto:
 
 - Java
-- Postegres
+- Postgres
 - Swagger
 - JUnit
 - JPA
