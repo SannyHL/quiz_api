@@ -75,5 +75,6 @@ Criado com ❤️ por Sanny Helen Lima <br>
 ⭐ Entre em contato!
 <br>
 
-[![Linkedin Badge](https://img.shields.io/badge/-SannyHL-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/sannyhelenlima/)](https://www.linkedin.com/in/https://www.linkedin.com/in/sannyhelenlima/) 
+[![Linkedin Badge](https://img.shields.io/badge/-SannyHL-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/sannyhelenlima/)](https://www.linkedin.com/in/sannyhelenlima
+) 
 [![Gmail Badge](https://img.shields.io/badge/-sannyhelenlima@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:sannyhelenlima@gmail.com)](mailto:sannyhelenlima@gmail.com)
