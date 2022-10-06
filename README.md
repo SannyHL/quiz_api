@@ -4,9 +4,11 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height="70px"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg" height="70px"/></div>
 
-<h3><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions">🔗API REST</a></h2>
+<h3><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=MATEMATICA">🔗API REST</a></h2>
 
 <h4>Api de questões que abordam temas como matemática, música, ciências dentre outros</h4>
+
+###### ⚠ Por questões de segurança, as configurações do banco de dados, e do Spring Security que estão na API no Heroku, não estão disponiveis nesse codigo.
 
 <h2>Recursos disponíveis</h2>
 
@@ -52,20 +54,27 @@ $ git checkout development
 ### 🛠 Tecnologias utilizadas na construção do projeto:
 
 - Java
+- Spring Framework
 - Postgres
 - Swagger
 - JUnit
 - JPA
 
 
-### Links de acesso da API:
+### Links de acessos livres da API que está no ar via Heroku:
 
-<h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions">🔎Todas as questões</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=MATEMATICA">🔎Questões de Matemática</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=ENTRETENIMENTO">🔎Questões de Entreterimento</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=GEOGRAFIA">🔎Questões de Geografia</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=MUSICA">🔎Questões de Música</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=CIENCIA">🔎Questões de Ciência</a></h4>
+
+### Imagens da API online via Heroku:
+
+<div  align="center"> 
+<img src="https://user-images.githubusercontent.com/104280692/194387887-5324d55f-2c3a-4ba3-aef7-75799364d767.png" height="500px"/>
+<img src="https://user-images.githubusercontent.com/104280692/194387972-f932640d-4fb3-4a37-be6e-5a085526d3d7.png" height="500px"/>
+</div>
 
 ### Autora
 ---
