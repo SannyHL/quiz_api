@@ -10,6 +10,7 @@
 
 ###### ⚠ Por questões de segurança, as configurações do banco de dados, e do Spring Security que estão na API no Heroku, não estão disponiveis nesse codigo.
 
+
 <h2>Recursos disponíveis</h2>
 
 - [x] Cadastro das questões
@@ -69,12 +70,16 @@ $ git checkout development
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=MUSICA">🔎Questões de Música</a></h4>
 <h4><a href="https://api-rest-quiz-sannyhl.herokuapp.com/questions/findByMateria?materia=CIENCIA">🔎Questões de Ciência</a></h4>
 
+
 ### Imagens da API online via Heroku:
 
 <div  align="center"> 
 <img src="https://user-images.githubusercontent.com/104280692/194387887-5324d55f-2c3a-4ba3-aef7-75799364d767.png" height="500px"/>
 <img src="https://user-images.githubusercontent.com/104280692/194387972-f932640d-4fb3-4a37-be6e-5a085526d3d7.png" height="500px"/>
 </div>
+
+<h4>Link do site desenvolvido pelo <a href="https://github.com/DanielCosta30">Daniel Costa de Souza</a> com um Front-end incrível que consome essa API: https://lnkd.in/d69C5Xv2</h4>
+
 
 ### Autora
 ---
